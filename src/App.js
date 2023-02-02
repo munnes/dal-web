@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import { BrowserRouter, HashRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import { ConfigureStore } from "./redux/configureStore";
+import MainComponent from "./components/MainComponent";
+
+
+
+const store = ConfigureStore();
+
+class App extends Component {
+  render() {
+    return (
+      //<AppOffer />
+       <Provider store={store}>
+       <BrowserRouter>
+         <MainComponent />
+       </BrowserRouter>
+      </Provider>
+    );
+  }
 }
 
 export default App;
