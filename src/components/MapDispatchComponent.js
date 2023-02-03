@@ -6,6 +6,9 @@ import { fetchCategories, postCategories, putCategory } from "../redux/ActionCre
 import { fetchCompanies,postCompanies,putCompany } from "../redux/ActionCreators/CompanyActionCreators";
 import {fetchDepartments,postDepartments,putDepartment} from "../redux/ActionCreators/DepartmentActionCreators"
 import { fetchQuotas,postQuotas,putQuota } from "../redux/ActionCreators/QuotaActionCreators";
+import { fetchViewDriver } from "../redux/ActionCreators/ViewDriverActionCreators";
+import {fetchEmployees,postEmployees,putEmployee} from '../redux/ActionCreators/EmployeeActionCreators'
+import { imageUpload } from "../redux/ActionCreators/UploadImageActionCreators";
 const MapDispatchToProps = (dispatch) => ({
   fetchCars: () => dispatch(fetchCars()),
   postCars: (car) => dispatch(postCars(car)),
@@ -48,6 +51,15 @@ const MapDispatchToProps = (dispatch) => ({
   resetQuotaForm:() => {
     dispatch(actions.reset("fQuota"));
   },
+
+  fetchViewDriver:()=>dispatch(fetchViewDriver()),
+  fetchEmployees:()=>dispatch(fetchEmployees()),
+  postEmployees:(emp)=>dispatch(postEmployees(emp)),
+  putEmployee:(eId,emp)=>dispatch(putEmployee(eId,emp)),
+  resetEmployeeForm:() => {
+    dispatch(actions.reset("fEmployee"));
+  },
+  imageUpload: (file) => dispatch(imageUpload(file)),
 })
 
 export default MapDispatchToProps;

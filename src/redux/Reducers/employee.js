@@ -9,6 +9,7 @@ export const Employees = (
     employees: [],
     addErrMess: null,
     isAdded: false,
+    employeeUpdate:null
   },
   action
 ) => {

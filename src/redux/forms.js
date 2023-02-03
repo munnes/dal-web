@@ -25,3 +25,13 @@ export const InitialQuota={
     cat_id:'',
     gallon:''
 }
+
+export const InitialEmployee={
+    emp_name:'',
+    pic:'',
+    comp_id:'',
+    d_id:'',
+    cat_id:'',
+    b_id:'',
+    car_id:''
+}

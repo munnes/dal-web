@@ -6,7 +6,9 @@ const MapStateToProps = (state) => {
       categories:state.categories,
       companies:state.companies,
       departments:state.departments,
-      quotas:state.quotas
+      quotas:state.quotas,
+      viewDrivers:state.viewDrivers,
+      employees:state.employees
     };
   };
   

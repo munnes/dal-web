@@ -8,16 +8,19 @@ import { Departments } from "./Reducers/department";
 import { Employees } from "./Reducers/employee";
 import { Quotas } from "./Reducers/quota";
 import { Img } from "./Reducers/img";
+import { ViewDrivers } from "./Reducers/viewDriver";
 import thunk from "redux-thunk";
 import logger from "redux-logger";
 import { createForms } from "react-redux-form";
+
 import {
     InitialCar,
     InitialBrand,
     InitialCategory,
     InitialCompany,
     InitialDepartment,
-    InitialQuota
+    InitialQuota,
+    InitialEmployee
 } from "./forms";
 
 
@@ -32,13 +35,15 @@ export const ConfigureStore = () => {
             quotas: Quotas,
             brands: Brands,
             img:Img,
+            viewDrivers:ViewDrivers,
             ...createForms({
                 fBrand: InitialBrand,
                 fCar: InitialCar,
                 fCategory: InitialCategory,
                 fCompany:InitialCompany,
                 fDepartment:InitialDepartment,
-                fQuota:InitialQuota
+                fQuota:InitialQuota,
+                fEmployee:InitialEmployee
             })
         }),
         applyMiddleware(thunk, logger)

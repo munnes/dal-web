@@ -96,6 +96,15 @@ toggleNav() {
                         </Collapse>
                     </Col>
                 </Row>
+                <NavItem>
+                              <NavLink
+                                className="nav-link "
+                                to="addEmployee"
+                                style={{ color: "white" }}
+                              >
+                                <span className="fa fa-list-alt  "></span> Employees
+                              </NavLink>
+                            </NavItem>
             </Navbar>
        
     }

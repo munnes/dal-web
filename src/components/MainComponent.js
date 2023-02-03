@@ -11,14 +11,18 @@ import AddCategory from "./Master/AddCategoryComponent";
 import AddCompany from "./Master/AddCompanyComponent";
 import AddDepartment from "./Master/AddDepartmentComponent";
 import AddQuota from "./Master/AddQuotaComponent";
+import AddEmployee from "./AddEmployeeComponent";
 const Home = () => <div>tttt</div>
 const Main = ({ ...props }) => {
     React.useEffect(() => {
         //********** */
         props.fetchCars();
         props.fetchBrands();
-        props.fetchCategories()
-        props.fetchCompanies()
+        props.fetchCategories();
+        props.fetchCompanies();
+        props.fetchViewDriver();
+        props.fetchEmployees();
+        props.fetchDepartments()
 
     }, [])
 
@@ -72,6 +76,20 @@ const Main = ({ ...props }) => {
                 postQuotas={props.postQuotas}
                 categories={props.categories.categories}
                 resetQuotaForm={props.resetQuotaForm}
+            />} />
+
+            <Route path="/addEmployee" element={<AddEmployee
+                employees={props.employees.employees}
+                employeeUpdate={props.employees.employeeUpdate}
+                putEmployee={props.putEmployee}
+                postEmployees={props.postEmployees}
+                categories={props.categories.categories}
+                companies={props.companies.companies}
+                departments={props.departments.departments}
+                brands={props.brands.brands}
+                viewDrivers={props.viewDrivers.viewDrivers}
+                resetEmployeeForm={props.resetEmployeeForm}
+                imageUpload={props.imageUpload}
             />} />
 
         </Routes>
