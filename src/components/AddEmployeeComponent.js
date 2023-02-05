@@ -30,7 +30,7 @@ class AddEmployee extends Component {
             cPlate: 0,
             cBrand: 0,
             isShowImg: false,
-            photoDoc:""
+            photoDoc: ""
         }
     }
     handleSubmit(values) {
@@ -101,18 +101,18 @@ class AddEmployee extends Component {
         const reader = new FileReader();
         reader.onload = () => {
             this.setState({
-              imgFile:reader.result,
-              isShowImg:true,
-             fileName:phName
+                imgFile: reader.result,
+                isShowImg: true,
+                fileName: phName
             })
-         
-          };
-          reader.readAsDataURL( event.target.files[0]);
+
+        };
+        reader.readAsDataURL(event.target.files[0]);
         event.preventDefault();
     };
 
-  
-    //     let phName = event.target.files[0].name;
+
+
     //     if (!phName.match(imgMatch)) {
     //         this.setState({ errPh: "You can upload only image files!", isShowImg: false });
     //         return
@@ -159,7 +159,7 @@ class AddEmployee extends Component {
                     </Link>
                 </BreadcrumbItem>
             </Breadcrumb>
-            <Card style={{ padding: "15px 15px 15px 15px" }}>
+            <Card className="crdFrame">
                 <Form
                     model="fEmployee"
                     onSubmit={(values) => this.handleSubmit(values)}
@@ -226,25 +226,25 @@ class AddEmployee extends Component {
                                 {this.state.photoDoc !== '' ? (
                                     <Col md={2}>
                                         <Row className="form-group">
-                                         
-                                                <img
-                                                    src={this.state.imgFile}
-                                                    alt="crd"
-                                                    style={{ width: "100px" }}
-                                                />
-                                            
+
+                                            <img
+                                                src={this.state.imgFile}
+                                                alt="crd"
+                                                style={{ width: "100px" }}
+                                            />
+
                                         </Row>
                                     </Col>) :
                                     this.props.employeeUpdate != null ? (
                                         <Col md={2}>
                                             <Row className="form-group">
-                                             
-                                                    <img
-                                                        src={baseUrl + this.props.employeeUpdate.pic}
-                                                        alt="crd"
-                                                        style={{ width: "100px" }}
-                                                    />
-                                               
+
+                                                <img
+                                                    src={baseUrl + this.props.employeeUpdate.pic}
+                                                    alt="crd"
+                                                    style={{ width: "100px" }}
+                                                />
+
                                             </Row>
                                         </Col>
                                     ) : null}
@@ -253,7 +253,8 @@ class AddEmployee extends Component {
                         </Col>
 
                         <Col md={6}>
-                            <Row className="form-group">
+                            <Row className="form-group" >
+
                                 <Label htmlFor="comp_id" md={4}>
                                     Company:
                                 </Label>
@@ -392,7 +393,7 @@ class AddEmployee extends Component {
                         <Col md={6}>
                             <Row className="form-group">
                                 <Label htmlFor="car_id" md={4}>
-                                    Car:
+                                    Assign Car:
                                 </Label>
                                 <Col md={8}>
                                     <Control.select
@@ -412,7 +413,7 @@ class AddEmployee extends Component {
                                             required,
                                         }}
                                     >
-                                        <option value={0}>Select Plate...</option>
+                                        <option value={0}>Assign Car...</option>
                                         {this.props.viewDrivers
                                             .filter((drv) => !drv.emp_id && drv.b_id === this.state.cBrand)
                                             .map((car) => (
@@ -482,9 +483,21 @@ class AddEmployee extends Component {
                                 </Col>
                             </Row>
                         </Col>
+                        <Col md={6}>
+                            <Row className="form-group" style={{color:'red',fontWeight:'bold',fontStyle:'italic'}}>
+                                <Label htmlFor="cat_id" md={4}>
+                                    Quota:
+                                </Label>
+                                <Label htmlFor="cat_id" md={8}>
+                                    {this.state.qCategory !== 0 ?
+                                     this.props.quotas.find((quota)=>
+                                     quota.cat_id===this.state.qCategory).gallon+' Gallon'
+                                     : null}
+                                </Label>
+                            </Row>
+                        </Col>
                         <Col md={{ size: 4, offset: 2 }}>
                             <Row className="form-group">
-                                <Label></Label>
                                 <Col >
                                     {!this.props.departmentUpdate ? (
                                         <Button

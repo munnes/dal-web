@@ -1,8 +1,5 @@
 
-
-
 import React, { Component } from "react";
-
 import {
     Button,
     Row,
@@ -48,7 +45,7 @@ class AddCompany extends Component {
                     </Link>
                 </BreadcrumbItem>
             </Breadcrumb>
-            <Card style={{ padding: "15px 15px 15px 15px" }}>
+            <Card className="crdFrame">
                 <Form
                     model="fCompany"
                     onSubmit={(values) => this.handleSubmit(values)}
@@ -87,7 +84,6 @@ class AddCompany extends Component {
 
                         <Col md={{ size: 4, offset: 2 }}>
                             <Row className="form-group">
-                                <Label></Label>
                                 <Col >
                                     {!this.props.companyUpdate ? (
                                         <Button

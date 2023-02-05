@@ -12,7 +12,8 @@ import AddCompany from "./Master/AddCompanyComponent";
 import AddDepartment from "./Master/AddDepartmentComponent";
 import AddQuota from "./Master/AddQuotaComponent";
 import AddEmployee from "./AddEmployeeComponent";
-const Home = () => <div>tttt</div>
+import Home from "./HomeComponent";
+
 const Main = ({ ...props }) => {
     React.useEffect(() => {
         //********** */
@@ -22,7 +23,9 @@ const Main = ({ ...props }) => {
         props.fetchCompanies();
         props.fetchViewDriver();
         props.fetchEmployees();
-        props.fetchDepartments()
+        props.fetchDepartments();
+        props.fetchQuotas();
+        props.fetchUsers()
 
     }, [])
 
@@ -31,7 +34,12 @@ const Main = ({ ...props }) => {
     return <div className="main">
         <Header />
         <Routes >
-            <Route path="/" element={<Home />}
+            <Route path="/" element={<Home
+                isLoading={props.auth.isLoading}
+                errMess={props.auth.errMess}
+                users={props.auth.users}
+                signupUser={props.signupUser}
+            />}
             />
             <Route path="/addCar" element={<AddCar
                 carUpdate={props.cars.carUpdate}
@@ -90,6 +98,7 @@ const Main = ({ ...props }) => {
                 viewDrivers={props.viewDrivers.viewDrivers}
                 resetEmployeeForm={props.resetEmployeeForm}
                 imageUpload={props.imageUpload}
+                quotas={props.quotas.quotas}
             />} />
 
         </Routes>

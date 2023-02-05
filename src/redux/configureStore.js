@@ -9,6 +9,7 @@ import { Employees } from "./Reducers/employee";
 import { Quotas } from "./Reducers/quota";
 import { Img } from "./Reducers/img";
 import { ViewDrivers } from "./Reducers/viewDriver";
+import {Auth} from './Reducers/auth'
 import thunk from "redux-thunk";
 import logger from "redux-logger";
 import { createForms } from "react-redux-form";
@@ -35,6 +36,7 @@ export const ConfigureStore = () => {
             quotas: Quotas,
             brands: Brands,
             img:Img,
+            auth:Auth,
             viewDrivers:ViewDrivers,
             ...createForms({
                 fBrand: InitialBrand,

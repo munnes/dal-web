@@ -54,7 +54,7 @@ class AddCar extends Component {
                     </Link>
                 </BreadcrumbItem>
             </Breadcrumb>
-            <Card style={{ padding: "15px 15px 15px 15px" }}>
+            <Card className="crdFrame">
                 <Form
                     model="fCar"
                     onSubmit={(values) => this.handleSubmit(values)}
@@ -139,7 +139,6 @@ class AddCar extends Component {
                         <Col md={6}>
 
                             <Row className="form-group">
-                                <Label></Label>
                                 <Label htmlFor="fuel" md={4}>
                                     Fuel:
                                 </Label>
@@ -186,7 +185,6 @@ class AddCar extends Component {
                         </Col>
                         <Col md={{ size: 4, offset: 2 }}>
                             <Row className="form-group">
-                                <Label></Label>
                                 <Col >
                                     {!this.props.carUpdate ? (
                                         <Button

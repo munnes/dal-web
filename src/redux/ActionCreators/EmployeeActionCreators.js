@@ -1,6 +1,7 @@
 
 import * as ActionTypes from "../ActionTypes";
 import { baseUrl } from "../../shared/baseUrl";
+import { signupUser } from "./UserActionCreators";
 
 //****POST */
 export const postEmployees = (employee) => (dispatch) => {
@@ -35,6 +36,9 @@ export const postEmployees = (employee) => (dispatch) => {
     .then((employees) => {
       console.log("Employee Added", employees);
       dispatch(employeeAdded(employees));
+      dispatch(signupUser({username:'user'+employees.emp_id,
+      password:'Dal@2023',
+      emp_id:employees.emp_id}))
 
     })
     .catch((error) => dispatch(employeeAddFailed(error.message)));

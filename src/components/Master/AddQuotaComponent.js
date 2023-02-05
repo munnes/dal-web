@@ -52,7 +52,7 @@ class AddQuota extends Component {
                     </Link>
                 </BreadcrumbItem>
             </Breadcrumb>
-            <Card style={{ padding: "15px 15px 15px 15px" }}>
+            <Card className="crdFrame">
                 <Form
                     model="fQuota"
                     onSubmit={(values) => this.handleSubmit(values)}
@@ -138,7 +138,6 @@ class AddQuota extends Component {
 
                         <Col md={{ size: 4, offset: 2 }}>
                             <Row className="form-group">
-                                <Label></Label>
                                 <Col >
                                     {!this.props.quotaUpdate ? (
                                         <Button

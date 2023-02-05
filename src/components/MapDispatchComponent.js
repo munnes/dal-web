@@ -9,6 +9,7 @@ import { fetchQuotas,postQuotas,putQuota } from "../redux/ActionCreators/QuotaAc
 import { fetchViewDriver } from "../redux/ActionCreators/ViewDriverActionCreators";
 import {fetchEmployees,postEmployees,putEmployee} from '../redux/ActionCreators/EmployeeActionCreators'
 import { imageUpload } from "../redux/ActionCreators/UploadImageActionCreators";
+import { signupUser,fetchUsers } from "../redux/ActionCreators/UserActionCreators";
 const MapDispatchToProps = (dispatch) => ({
   fetchCars: () => dispatch(fetchCars()),
   postCars: (car) => dispatch(postCars(car)),
@@ -60,6 +61,9 @@ const MapDispatchToProps = (dispatch) => ({
     dispatch(actions.reset("fEmployee"));
   },
   imageUpload: (file) => dispatch(imageUpload(file)),
+  signupUser:(user)=>dispatch(signupUser(user)),
+  fetchUsers:()=>dispatch(fetchUsers())
+
 })
 
 export default MapDispatchToProps;
