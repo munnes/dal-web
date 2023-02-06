@@ -10,6 +10,7 @@ import { Quotas } from "./Reducers/quota";
 import { Img } from "./Reducers/img";
 import { ViewDrivers } from "./Reducers/viewDriver";
 import {Auth} from './Reducers/auth'
+import {ViewQuotas} from './Reducers/viewQuota'
 import thunk from "redux-thunk";
 import logger from "redux-logger";
 import { createForms } from "react-redux-form";
@@ -38,6 +39,7 @@ export const ConfigureStore = () => {
             img:Img,
             auth:Auth,
             viewDrivers:ViewDrivers,
+            viewQuotas:ViewQuotas,
             ...createForms({
                 fBrand: InitialBrand,
                 fCar: InitialCar,

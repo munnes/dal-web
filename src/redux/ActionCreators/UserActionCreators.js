@@ -56,6 +56,8 @@ export const loginUser = (creds) => (dispatch) => {
         localStorage.setItem("token", response.token);
         localStorage.setItem("creds", JSON.stringify(creds));
         localStorage.setItem("isReset", response.isReset);
+        localStorage.setItem("userID", response.userID);
+        localStorage.setItem("username", response.username);
         dispatch(receiveLogin(response.token));
       } else {
         var error = new Error("Error " + response.status);

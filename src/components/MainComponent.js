@@ -25,7 +25,8 @@ const Main = ({ ...props }) => {
         props.fetchEmployees();
         props.fetchDepartments();
         props.fetchQuotas();
-        props.fetchUsers()
+        props.fetchUsers();
+        props.fetchViewQuotas()
 
     }, [])
 
@@ -39,6 +40,7 @@ const Main = ({ ...props }) => {
                 errMess={props.auth.errMess}
                 users={props.auth.users}
                 signupUser={props.signupUser}
+                loginUser={props.loginUser}
             />}
             />
             <Route path="/addCar" element={<AddCar
@@ -47,13 +49,18 @@ const Main = ({ ...props }) => {
                 postCars={props.postCars}
                 brands={props.brands.brands}
                 resetCarForm={props.resetCarForm}
-
+                cars={props.cars.cars}
+                isLoading={props.cars.isLoading}
+                errMess={props.cars.errMess}
             />} />
             <Route path="/addBrand" element={<AddBrand
                 carUpdate={props.brands.brandUpdate}
                 putBrand={props.putBrand}
                 postBrands={props.postBrands}
                 resetBrandForm={props.resetBrandForm}
+                brands={props.brands.brands}
+                isLoading={props.brands.isLoading}
+                errMess={props.brands.errMess}
             />} />
 
             <Route path="/addCategory" element={<AddCategory
@@ -61,6 +68,9 @@ const Main = ({ ...props }) => {
                 putCategory={props.putCategory}
                 postCategories={props.postCategories}
                 resetCategoryForm={props.resetCategoryForm}
+                categories={props.categories.categories}
+                isLoading={props.categories.isLoading}
+                errMess={props.categories.errMess}
             />} />
 
 
@@ -69,6 +79,9 @@ const Main = ({ ...props }) => {
                 putCompany={props.putCompany}
                 postCompanies={props.postCompanies}
                 resetCompanyForm={props.resetCompanyForm}
+                companies={props.companies.companies}
+                isLoading={props.companies.isLoading}
+                errMess={props.companies.errMess}
             />} />
             <Route path="/addDepartment" element={<AddDepartment
                 departmentUpdate={props.departments.departmentUpdate}
@@ -76,6 +89,9 @@ const Main = ({ ...props }) => {
                 postDepartments={props.postDepartments}
                 companies={props.companies.companies}
                 resetDepartmentForm={props.resetDepartmentForm}
+                departments={props.departments.departments}
+                isLoading={props.departments.isLoading}
+                errMess={props.departments.errMess}
             />} />
 
             <Route path="/addQuota" element={<AddQuota
@@ -99,6 +115,7 @@ const Main = ({ ...props }) => {
                 resetEmployeeForm={props.resetEmployeeForm}
                 imageUpload={props.imageUpload}
                 quotas={props.quotas.quotas}
+                viewQuotas={props.viewQuotas.viewQuotas}
             />} />
 
         </Routes>

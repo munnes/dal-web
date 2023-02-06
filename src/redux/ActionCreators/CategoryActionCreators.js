@@ -1,6 +1,7 @@
 
 import * as ActionTypes from "../ActionTypes";
 import { baseUrl } from "../../shared/baseUrl";
+import { fetchQuotas } from "./QuotaActionCreators";
 
 //****POST */
 export const postCategories = (category) => (dispatch) => {
@@ -35,7 +36,8 @@ export const postCategories = (category) => (dispatch) => {
     .then((categories) => {
       console.log("Category Added", categories);
       dispatch(categoryAdded(categories));
-dispatch(fetchCategories())
+      dispatch(fetchCategories())
+    
     })
     .catch((error) => dispatch(categoryAddFailed(error.message)));
 };

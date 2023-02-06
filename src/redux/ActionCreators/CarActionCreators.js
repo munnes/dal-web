@@ -1,6 +1,7 @@
 
 import * as ActionTypes from "../ActionTypes";
 import { baseUrl } from "../../shared/baseUrl";
+import { fetchViewDriver } from "./ViewDriverActionCreators";
 
 //****POST */
 export const postCars = (car) => (dispatch) => {
@@ -38,6 +39,7 @@ export const postCars = (car) => (dispatch) => {
       console.log("Car Added", cars);
       dispatch(carAdded(cars));
       dispatch(fetchCars())
+      dispatch(fetchViewDriver())
 
     })
     .catch((error) => dispatch(carAddFailed(error.message+car.fuel)));

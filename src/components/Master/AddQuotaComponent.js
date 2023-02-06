@@ -13,7 +13,7 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import { Control, Form, Errors } from "react-redux-form";
-import { required, requiredErr,isNumber,numErr } from "../../shared/constVal";
+import { required, requiredErr, isNumber, numErr } from "../../shared/constVal";
 class AddQuota extends Component {
     constructor(props) {
         super(props);
@@ -26,15 +26,18 @@ class AddQuota extends Component {
         const currentItem = {
             gallon: values.gallon,
             cat_id: values.cat_id,
-            
+
         }
         if (this.props.quotaUpdate)
             this.props.putQuota(this.props.quotaUpdate.q_id, currentItem)
         else
             this.props.postQuotas(currentItem)
-            this.props.resetQuotaForm()
+        this.resetForm()
     }
-   
+    resetForm = () => {
+        this.props.resetQuotaForm()
+        this.setState({ qCategory: 0, })
+    }
     render() {
         var gallon = '', cat_id = 0;
         if (this.props.quotaUpdate) {
@@ -61,7 +64,7 @@ class AddQuota extends Component {
                         <Col md={6}>
                             <Row className="form-group">
                                 <Label htmlFor="cat_id" md={4}>
-                                   Employees' Category:
+                                    Employees' Category:
                                 </Label>
                                 <Col md={8}>
                                     <Control.select
@@ -107,7 +110,7 @@ class AddQuota extends Component {
                         <Col md={6}>
                             <Row className="form-group">
                                 <Label htmlFor="gallon" md={4}>
-                                Gallon:
+                                    Gallon:
                                 </Label>
                                 <Col md={8}>
                                     <Control.text
@@ -128,7 +131,7 @@ class AddQuota extends Component {
                                         show="touched"
                                         messages={{
                                             required: requiredErr,
-                                            isNumber:numErr
+                                            isNumber: numErr
 
                                         }}
                                     />
@@ -157,7 +160,7 @@ class AddQuota extends Component {
                                         </Button>
                                     )}
                                     &nbsp; &nbsp;
-                                    <Button color="danger" onClick={() => this.props.resetQuotaForm()}>
+                                    <Button color="danger" onClick={() => this.resetForm()}>
                                         Reset
                                     </Button>
                                 </Col>

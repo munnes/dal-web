@@ -6,7 +6,8 @@ const Home = ({ ...props }) => {
     else if (props.errMess)
         return <div>{props.errMess}</div>
     else {
-        if (props.users.length === 0) {
+  
+       /* if (props.users.length === 0) {
             props.signupUser({
                 username: 'sysAdmin',
                 password: 'Sys@2023'
@@ -15,7 +16,7 @@ const Home = ({ ...props }) => {
                 username: 'stationAdmin',
                 password: 'Station@2023'
             })
-        }
+        }*/
         return <div className="container">Welcome</div>
     }
 }

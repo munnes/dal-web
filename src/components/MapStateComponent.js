@@ -9,7 +9,8 @@ const MapStateToProps = (state) => {
       quotas:state.quotas,
       viewDrivers:state.viewDrivers,
       employees:state.employees,
-      auth:state.auth
+      auth:state.auth,
+      viewQuotas:state.viewQuotas
     };
   };
   

@@ -16,7 +16,7 @@ export const Auth = (
    
     userID: +localStorage.getItem("userID"),
     username: localStorage.getItem("username"),
-   
+   users:[],
     isUpdated: null,
    
   },

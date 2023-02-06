@@ -2,6 +2,7 @@
 import * as ActionTypes from "../ActionTypes";
 import { baseUrl } from "../../shared/baseUrl";
 import { signupUser } from "./UserActionCreators";
+import { fetchViewDriver } from "./ViewDriverActionCreators";
 
 //****POST */
 export const postEmployees = (employee) => (dispatch) => {
@@ -39,6 +40,7 @@ export const postEmployees = (employee) => (dispatch) => {
       dispatch(signupUser({username:'user'+employees.emp_id,
       password:'Dal@2023',
       emp_id:employees.emp_id}))
+      dispatch (fetchViewDriver())
 
     })
     .catch((error) => dispatch(employeeAddFailed(error.message)));

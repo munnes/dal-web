@@ -10,7 +10,7 @@ export const InitialCar= {
 }
 
 export const InitialCategory= {
-    c_name:'',
+    cat_name:'',
 }
 
 export const InitialCompany= {

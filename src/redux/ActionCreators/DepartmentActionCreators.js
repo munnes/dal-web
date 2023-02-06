@@ -36,6 +36,7 @@ export const postDepartments = (department) => (dispatch) => {
     .then((departments) => {
       console.log("Department Added", departments);
       dispatch(departmentAdded(departments));
+      dispatch (fetchDepartments())
 
     })
     .catch((error) => dispatch(departmentAddFailed(error.message)));

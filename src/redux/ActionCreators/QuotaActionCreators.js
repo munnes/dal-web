@@ -2,6 +2,7 @@
 
 import * as ActionTypes from "../ActionTypes";
 import { baseUrl } from "../../shared/baseUrl";
+import { fetchViewQuotas } from "./ViewQuotaActionCreators";
 
 //****POST */
 export const postQuotas = (quota) => (dispatch) => {
@@ -36,7 +37,7 @@ export const postQuotas = (quota) => (dispatch) => {
     .then((quotas) => {
       console.log("Quota Added", quotas);
       dispatch(quotaAdded(quotas));
-
+      dispatch(fetchViewQuotas())
     })
     .catch((error) => dispatch(quotaAddFailed(error.message)));
 };

@@ -14,6 +14,7 @@ import {
 import { Link } from "react-router-dom";
 import { Control, Form, Errors } from "react-redux-form";
 import { required, requiredErr } from "../../shared/constVal";
+import { Loading } from "../LoadingComponent";
 class AddCategory extends Component {
     constructor(props) {
         super(props);
@@ -36,87 +37,93 @@ class AddCategory extends Component {
         if (this.props.categoryUpdate) {
             cat_name = this.props.categoryUpdate.cat_name;
         }
-        return <div className="container" style={{ marginTop: '2px' }} >
-            <Breadcrumb className="breadcrumb">
-                <BreadcrumbItem className="breadcrumb-item" active>
-                    Add Employee Category
-                </BreadcrumbItem>
-                <BreadcrumbItem className="breadcrumb-item">
-                    <Link className="link" to="/">
-                        View Employees' Categories
-                    </Link>
-                </BreadcrumbItem>
-            </Breadcrumb>
-            <Card className="crdFrame">
-                <Form
-                    model="fCategory"
-                    onSubmit={(values) => this.handleSubmit(values)}
-                >
-                    <Row>
+        if (this.props.isLoading)
+            return <Loading />
+        else if (this.props.errMess)
+            return <h3 style={{ color: 'red' }}>{this.props.errMess}</h3>
+        else
+            return <div className="container" style={{ marginTop: '2px' }} >
+                <Breadcrumb className="breadcrumb">
+                    <BreadcrumbItem className="breadcrumb-item" active>
+                        Add Employee Category
+                    </BreadcrumbItem>
+                    <BreadcrumbItem className="breadcrumb-item">
+                        <Link className="link" to="/">
+                            View Employees' Categories
+                        </Link>
+                    </BreadcrumbItem>
+                </Breadcrumb>
+                <Card className="crdFrame">
+                    <Form
+                        model="fCategory"
+                        onSubmit={(values) => this.handleSubmit(values)}
+                    >
+                        <Row>
 
 
-                        <Col md={6}>
-                            <Row className="form-group">
-                                <Label htmlFor="cat_name" md={4}>
-                                    Employee Category:
-                                </Label>
-                                <Col md={8}>
-                                    <Control.text
-                                        model="fCategory.cat_name"
-                                        id="cat_name"
-                                        name="cat_name"
-                                        defaultValue={cat_name}
-                                        className="form-control"
-                                        validators={{
-                                            required,
+                            <Col md={6}>
+                                <Row className="form-group">
+                                    <Label htmlFor="cat_name" md={4}>
+                                        Employee Category:
+                                    </Label>
+                                    <Col md={8}>
+                                        <Control.text
+                                            model="fCategory.cat_name"
+                                            id="cat_name"
+                                            name="cat_name"
+                                            defaultValue={cat_name}
+                                            className="form-control"
+                                            validators={{
+                                                required,
+                                                isAdded: (category) => !this.props.categories.some((cat) =>
+                                                    cat.cat_name.toLowerCase() === category.toLowerCase())
+                                            }}
+                                        />
+                                        <Errors
+                                            className="text-danger"
+                                            model="fCategory.cat_name"
+                                            show="touched"
+                                            messages={{
+                                                required: requiredErr,
+                                                isAdded: 'Sorry, Employee category already added'
+                                            }}
+                                        />
+                                    </Col>
+                                </Row>
+                            </Col>
 
-                                        }}
-                                    />
-                                    <Errors
-                                        className="text-danger"
-                                        model="fCategory.cat_name"
-                                        show="touched"
-                                        messages={{
-                                            required: requiredErr,
 
-                                        }}
-                                    />
-                                </Col>
-                            </Row>
-                        </Col>
-
-
-                        <Col md={{ size: 4, offset: 2 }}>
-                            <Row className="form-group">
-                                <Col >
-                                    {!this.props.categoryUpdate ? (
-                                        <Button
-                                            type="submit"
-                                            color="primary"
-                                        // disabled={this.state.btnDis}
-                                        >
-                                            Add Category
+                            <Col md={{ size: 4, offset: 2 }}>
+                                <Row className="form-group">
+                                    <Col >
+                                        {!this.props.categoryUpdate ? (
+                                            <Button
+                                                type="submit"
+                                                color="primary"
+                                            // disabled={this.state.btnDis}
+                                            >
+                                                Add Category
+                                            </Button>
+                                        ) : (
+                                            <Button
+                                                type="submit"
+                                                color="primary"
+                                            //  disabled={this.state.btnDis}
+                                            >
+                                                Update Category
+                                            </Button>
+                                        )}
+                                        &nbsp; &nbsp;
+                                        <Button color="danger" onClick={() => this.props.resetCategoryForm()} >
+                                            Reset
                                         </Button>
-                                    ) : (
-                                        <Button
-                                            type="submit"
-                                            color="primary"
-                                        //  disabled={this.state.btnDis}
-                                        >
-                                            Update Category
-                                        </Button>
-                                    )}
-                                    &nbsp; &nbsp;
-                                    <Button color="danger" onClick={() => this.props.resetCategoryForm()} >
-                                        Reset
-                                    </Button>
-                                </Col>
-                            </Row>
-                        </Col>
-                    </Row>
-                </Form>
-            </Card>
-        </div>
+                                    </Col>
+                                </Row>
+                            </Col>
+                        </Row>
+                    </Form>
+                </Card>
+            </div>
     }
 }
 export default AddCategory;

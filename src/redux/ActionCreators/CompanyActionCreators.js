@@ -35,6 +35,7 @@ export const postCompanies = (company) => (dispatch) => {
     .then((companies) => {
       console.log("Company Added", companies);
       dispatch(companyAdded(companies));
+      dispatch (fetchCompanies())
 
     })
     .catch((error) => dispatch(companyAddFailed(error.message)));

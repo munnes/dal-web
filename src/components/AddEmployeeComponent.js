@@ -54,8 +54,9 @@ class AddEmployee extends Component {
                     this.props.putEmployee(this.props.employeeUpdate.emp_id, currentItem)
                 else
                     this.props.postEmployees(currentItem)
+                    this.resetForm()
             }
-            this.props.resetEmployeeForm()
+
         }
     }
 
@@ -111,37 +112,19 @@ class AddEmployee extends Component {
         event.preventDefault();
     };
 
+    resetForm = () => {
+        this.setState({
+            dComp: 0,
+            dept: 0,
+            photoName: "",
+            photoDoc: "",
+            qCategory: 0,
+            cPlate: 0,
+            cBrand: 0,
+        })
+        this.props.resetEmployeeForm()
+    }
 
-
-    //     if (!phName.match(imgMatch)) {
-    //         this.setState({ errPh: "You can upload only image files!", isShowImg: false });
-    //         return
-    //     }
-    //     else this.setState({ errPh: null });
-
-    //     //**** */
-    //     let files;
-    //     let fileName = null
-    //     if (event.target)
-    //         fileName = event.target.files[0].name//.slice(0, -4)
-    //     if (event.dataTransfer) {
-    //         files = event.dataTransfer.files;
-    //     } else if (event.target) {
-    //         files = event.target.files;
-    //     }
-    //  const reader = new FileReader();
-
-    //     reader.onload = () => {
-    //         this.setState({
-    //             imgFile: event.target.files[0],//reader.result,
-    //             isShowImg: true,
-    //             fileName
-    //         })
-
-    //     };
-    //     reader.readAsDataURL(files[0]);
-    //     event.preventDefault();
-    // };
     render() {
         var emp_name = '', car_id = 0, comp_id = 0, d_id = 0, cat_id = 0, b_id = 0;
         if (this.props.departmentUpdate) {
@@ -462,7 +445,7 @@ class AddEmployee extends Component {
                                         }}
                                     >
                                         <option value={0}>Select Category...</option>
-                                        {this.props.categories
+                                        {this.props.viewQuotas
                                             .map((category) => (
                                                 <option
                                                     value={category.cat_id}
@@ -484,15 +467,15 @@ class AddEmployee extends Component {
                             </Row>
                         </Col>
                         <Col md={6}>
-                            <Row className="form-group" style={{color:'red',fontWeight:'bold',fontStyle:'italic'}}>
+                            <Row className="form-group" style={{ color: 'red', fontWeight: 'bold', fontStyle: 'italic' }}>
                                 <Label htmlFor="cat_id" md={4}>
                                     Quota:
                                 </Label>
                                 <Label htmlFor="cat_id" md={8}>
                                     {this.state.qCategory !== 0 ?
-                                     this.props.quotas.find((quota)=>
-                                     quota.cat_id===this.state.qCategory).gallon+' Gallon'
-                                     : null}
+                                        this.props.quotas.find((quota) =>
+                                            quota.cat_id === this.state.qCategory).gallon + ' Gallon'
+                                        : null}
                                 </Label>
                             </Row>
                         </Col>
@@ -517,7 +500,7 @@ class AddEmployee extends Component {
                                         </Button>
                                     )}
                                     &nbsp; &nbsp;
-                                    <Button color="danger" onClick={() => this.props.resetEmployeeForm()}>
+                                    <Button color="danger" onClick={() => this.resetForm}>
                                         Reset
                                     </Button>
                                 </Col>

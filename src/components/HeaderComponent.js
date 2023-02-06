@@ -92,11 +92,7 @@ toggleNav() {
                                        
                                     </DropdownMenu>
                                 </UncontrolledDropdown>
-                            </Nav>
-                        </Collapse>
-                    </Col>
-                </Row>
-                <NavItem>
+                                <NavItem>
                               <NavLink
                                 className="nav-link "
                                 to="addEmployee"
@@ -105,6 +101,14 @@ toggleNav() {
                                 <span className="fa fa-list-alt  "></span> Employees
                               </NavLink>
                             </NavItem>
+                            
+                            </Nav>
+                         
+                        </Collapse>
+                   
+                    </Col>
+                </Row>
+            
             </Navbar>
        
     }
