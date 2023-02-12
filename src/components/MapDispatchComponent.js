@@ -11,6 +11,9 @@ import { fetchEmployees, postEmployees, putEmployee } from '../redux/ActionCreat
 import { imageUpload } from "../redux/ActionCreators/UploadImageActionCreators";
 import { signupUser, fetchUsers, loginUser } from "../redux/ActionCreators/UserActionCreators";
 import { fetchViewQuotas } from "../redux/ActionCreators/ViewQuotaActionCreators";
+import {fetchViewDone} from "../redux/ActionCreators/ViewDoneActionCreators"
+import { fetchEmpCars,postEmpCars,putEmpCar } from "../redux/ActionCreators/EmpCarActionCreators";
+import { fetchViewCarHistory } from "../redux/ActionCreators/ViewCarHistoryActionCreators";
 const MapDispatchToProps = (dispatch) => ({
   fetchCars: () => dispatch(fetchCars()),
   postCars: (car) => dispatch(postCars(car)),
@@ -66,7 +69,14 @@ const MapDispatchToProps = (dispatch) => ({
   fetchUsers: () => dispatch(fetchUsers()),
   loginUser: (usr) => dispatch(loginUser(usr)),
 
-  fetchViewQuotas: () => dispatch(fetchViewQuotas())
+  fetchViewQuotas: () => dispatch(fetchViewQuotas()),
+  fetchViewDone: () => dispatch(fetchViewDone()),
+  
+  fetchEmpCars:()=>dispatch(fetchEmpCars()),
+  postEmpCars:(empCar)=>dispatch(postEmpCars(empCar)),
+  putEmpCar:(id,empCar)=>dispatch(putEmpCar(id,empCar)),
+
+  fetchViewCarHistory:()=>dispatch(fetchViewCarHistory())
 })
 
 export default MapDispatchToProps;

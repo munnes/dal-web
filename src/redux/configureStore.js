@@ -11,6 +11,9 @@ import { Img } from "./Reducers/img";
 import { ViewDrivers } from "./Reducers/viewDriver";
 import {Auth} from './Reducers/auth'
 import {ViewQuotas} from './Reducers/viewQuota'
+import { ViewDones } from "./Reducers/viewDone";
+import { EmpCars } from "./Reducers/empCar";
+import { ViewCarHistories } from "./Reducers/viewCarHistory";
 import thunk from "redux-thunk";
 import logger from "redux-logger";
 import { createForms } from "react-redux-form";
@@ -22,7 +25,8 @@ import {
     InitialCompany,
     InitialDepartment,
     InitialQuota,
-    InitialEmployee
+    InitialEmployee,
+    InitialEmpCar
 } from "./forms";
 
 
@@ -40,6 +44,9 @@ export const ConfigureStore = () => {
             auth:Auth,
             viewDrivers:ViewDrivers,
             viewQuotas:ViewQuotas,
+            viewDones:ViewDones,
+            empCars:EmpCars,
+            viewCarHistories:ViewCarHistories,
             ...createForms({
                 fBrand: InitialBrand,
                 fCar: InitialCar,
@@ -47,7 +54,8 @@ export const ConfigureStore = () => {
                 fCompany:InitialCompany,
                 fDepartment:InitialDepartment,
                 fQuota:InitialQuota,
-                fEmployee:InitialEmployee
+                fEmployee:InitialEmployee,
+                fEmpCar:InitialEmpCar
             })
         }),
         applyMiddleware(thunk, logger)

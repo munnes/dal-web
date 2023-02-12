@@ -12,7 +12,10 @@ import AddCompany from "./Master/AddCompanyComponent";
 import AddDepartment from "./Master/AddDepartmentComponent";
 import AddQuota from "./Master/AddQuotaComponent";
 import AddEmployee from "./AddEmployeeComponent";
+import Consumption from './History/ConsumptionComponent'
 import Home from "./HomeComponent";
+import ChangeCar from "./ChangeCarComponent";
+import CarHistory from "./History/CarHistoryComponent";
 
 const Main = ({ ...props }) => {
     React.useEffect(() => {
@@ -26,11 +29,12 @@ const Main = ({ ...props }) => {
         props.fetchDepartments();
         props.fetchQuotas();
         props.fetchUsers();
-        props.fetchViewQuotas()
+        props.fetchViewQuotas();
+        props.fetchViewDone();
+        props.fetchEmpCars();
+        props.fetchViewCarHistory()
 
     }, [])
-
-
 
     return <div className="main">
         <Header />
@@ -116,7 +120,36 @@ const Main = ({ ...props }) => {
                 imageUpload={props.imageUpload}
                 quotas={props.quotas.quotas}
                 viewQuotas={props.viewQuotas.viewQuotas}
+
             />} />
+
+            <Route path="/Consumption" element={<Consumption
+                isLoading={props.viewDones.isLoading}
+                errMess={props.viewDones.errMess}
+                viewDones={props.viewDones.viewDones}
+                isLoadingEmp={props.employees.isLoading}
+                errMessEmp={props.employees.errMess}
+                employees={props.employees.employees}
+            />}
+
+            />
+            <Route path="/ChangeCar" element={<ChangeCar
+                brands={props.brands.brands}
+                viewDrivers={props.viewDrivers.viewDrivers}
+                postEmpCars={props.postEmpCars}
+                putEmpCar={props.putEmpCar}
+                putEmployee={props.putEmployee}
+                employees={props.employees.employees}
+                empCars={props.empCars.empCars}
+
+            />} />
+            <Route path="/CarHistory" element={<CarHistory
+                isLoading={props.viewCarHistories.isLoading}
+                errMess={props.viewCarHistories.errMess}
+                viewCarHistories={props.viewCarHistories.viewCarHistories}
+                employees={props.employees.employees}
+            />}
+            />
 
         </Routes>
     </div>

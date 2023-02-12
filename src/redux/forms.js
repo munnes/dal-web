@@ -35,3 +35,10 @@ export const InitialEmployee={
     b_id:'',
     car_id:''
 }
+
+export const InitialEmpCar={
+    emp_id:'',
+    b_id:'',
+    car_id:''
+
+}
